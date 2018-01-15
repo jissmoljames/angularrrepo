@@ -1,0 +1,41 @@
+
+<div class="container">
+    <div>
+        <input type="radio" name="colors" (click)="color='lightgreen'">Green
+        <input type="radio" name="colors" (click)="color='yellow'">Yellow
+        <input type="radio" name="colors" (click)="color='cyan'">Cyan
+      </div>
+  <p [appHighlight]="color">Highlight me!</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Code</th>
+        <th scope="col">Date</th>
+        <th scope="col">description</th>
+        <th scope="col">price</th>
+        <th scope="col">rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; let i = index" >
+        <th scope="row"><a [routerLink]="['/product', product.productId]"><img [src]="product.imageUrlxs" alt=""></a></th>
+        <td>{{product.productName}}</td>
+        <td>{{product.productCode}}</td>
+        <td>{{product.releaseDate}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.price| currency:'INR'}}</td>
+        <td><ngb-rating [(rate)]="product.starRating"></ngb-rating></td>
+      </tr>
+      
+    </tbody>
+  </table>
+  <div>maxSize = 5, rotate = false</div>
+  <ngb-pagination [collectionSize]="120" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"></ngb-pagination>
+  
+ 
+    
+</div>
+
+
